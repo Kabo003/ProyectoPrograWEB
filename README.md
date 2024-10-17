@@ -1,3 +1,29 @@
+
+### ESPACIO PARA LOS COMENTARIOS DE LA GENTE XD
+
+/*Gente si añaden algo o cambian algo aparte de avisar por el grupo escriban aquí con fecha para saber qué cosa y cuándo se alteró algo en caso de tener un bug saber dónde buscar y tener todo organizado xd*/
+
+### Ya ahora si pongan sus avance Y NO SE OLVIDEN DE HACER PULL Y AVISAR ANTES DE HACER PUSH PARA QUE NO SE LOQUEE TODO EL PROYECTO EN NUESTRAS PCS XDDDDD
+
+17/10 -Creación del proyecto y subida a GitHub
+    Ya se instaló la librería de react-router-dom pero al estar en node_modules no se subirá al git, no se olviden de instalarla junto con el npm install. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
