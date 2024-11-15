@@ -1,0 +1,66 @@
+.category-container {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Lista de categorías principales */
+  .category-list {
+    display: flex; /* Muestra las categorías en línea */
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .category-item {
+    position: relative;
+  }
+  
+  /* Botón de categoría principal */
+  .category-btn {
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .category-btn:hover {
+    color: #007bff;
+  }
+  
+  /* Botón activo */
+  .category-btn.active {
+    color: #007bff; /* Color distinto para la categoría seleccionada */
+    border-bottom: 2px solid #007bff; /* Indicador visual de selección */
+  }
+  
+  /* Lista de subcategorías */
+  .subcategory-list {
+    position: absolute;
+    top: 100%; /* Aparece debajo del botón de categoría */
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    list-style: none;
+    padding: 10px 20px;
+    margin: 5px 0 0 0;
+    z-index: 10; /* Asegura que esté sobre otros elementos */
+  }
+  
+  /* Elementos de subcategorías */
+  .subcategory-item {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .subcategory-item:hover {
+    color: #007bff; /* Cambia el color al pasar el mouse */
+  }
