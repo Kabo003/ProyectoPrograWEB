@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
 import { Orden_Producto } from "./Orden_Producto.js";
-import { Producto } from "./Producto.js";
+import { Producto } from "./Producto.cjs";
 
 export const Orden = sequelize.define(
     "Orden", {
