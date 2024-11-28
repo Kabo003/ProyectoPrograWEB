@@ -1,9 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import '../componentsstilos/Header.css';
 const Headers =  () => {
    
     const navigate=useNavigate();
+    const location=useLocation();
    
     const IraIniciarSesion=()=>{
        
@@ -18,6 +19,8 @@ const Headers =  () => {
    const Buscar=()=>{
       navigate('/pe/es/search/home')
    }
+
+   
 
 
   return (
@@ -37,9 +40,10 @@ const Headers =  () => {
         <button onClick={Buscar} className="search-button">
           Buscar
         </button>
+        {location.pathname!=='/pe/es/logon' &&(
         <button onClick={IraIniciarSesion} className="btn-text">
           Iniciar Sesión
-        </button>
+        </button>)}
         <button onClick={Ircesta} className="btn-text">
           Cesta
         </button>
