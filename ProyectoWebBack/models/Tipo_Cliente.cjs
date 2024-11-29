@@ -1,20 +1,18 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 
-export const Categoria = sequelize.define(
-    "Categoria", {
+export const Tipo_Cliente = sequelize.define(
+    "Tipo_Cliente", {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        nombre_categoria: {
+        nombre_tipo_cliente: {
             type: DataTypes.STRING
         },
-        tipo_cliente_id: {
-            type: DataTypes.INTEGER
-        }
     }, {
         freezeTableName: true
     }
 );
+
