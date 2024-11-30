@@ -1,7 +1,7 @@
 //Para generar ordenes de compra
 
 const Orden = require('../../models/Orden');
-const ProductoOrden = require('../../models/ProductoOrden');
+const ProductoOrden = require('../../models/Orden_Productos');
 
 const createOrder = async (req, res, next) => {
   try {
