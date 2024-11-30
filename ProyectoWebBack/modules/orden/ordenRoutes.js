@@ -1,9 +1,9 @@
 import express from 'express';
 import { createOrder, getOrdersByUser } from './ordenController.js';
 
-const router = express.Router();
+const routerOrden = express.Router();
 
-router.post('/', createOrder);  
-router.get('/user/:usuario_id', getOrdersByUser); 
+routerOrden.post('/', createOrder);  
+routerOrden.get('/user/:usuario_id', getOrdersByUser); 
 
-export default router;
+export default routerOrden;

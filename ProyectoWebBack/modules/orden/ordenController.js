@@ -1,5 +1,5 @@
 import { Orden } from '../../models/Orden.js';
-import { ProductoOrden } from '../../models/Orden_Productos.js';
+import { Orden_Productos } from '../../models/Orden_Productos.js';
 
 const createOrder = async (req, res, next) => {
   try {
@@ -12,7 +12,7 @@ const createOrder = async (req, res, next) => {
         orden_id: newOrder.id,
         producto_id: producto.id,
       }));
-      await ProductoOrden.bulkCreate(productosOrden);
+      await Orden_Productos.bulkCreate(productosOrden);
     }
 
     res.status(201).json({ message: 'Orden creada', order: newOrder });

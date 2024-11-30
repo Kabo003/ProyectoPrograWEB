@@ -10,12 +10,23 @@ import { Tipo_Cliente } from './models/Tipo_Cliente.js';
 import { Usuario } from './models/Usuario.js';
 import { setupRelationships } from './models/setupRelationships.js';
 
+import routerAuth from './modules/auth/authRoutes.js';
+import routerOrden from './modules/orden/ordenRoutes.js';
+import routerTipo from './modules/tipoproduct/tipoProductRoutes.js';
+import routerUser from './modules/user/userRoutes.js';
+import routerProducto from './modules/producto/productRoutes.js';
 
 const app = express();
 const port = 3008;
 
 app.use(express.json());
 app.use(cors());
+
+app.use('/products', routerProducto);
+app.use('/pinga', routerAuth);
+app.use('/daa', routerOrden);
+app.use('/tipo', routerTipo);
+app.use('/i', routerUser);
 
 setupRelationships();
 
@@ -28,3 +39,6 @@ async function verificarConexion(){
         console.error("Ocurrio un error con la conexion a la BD", error)
     }
 }
+
+
+

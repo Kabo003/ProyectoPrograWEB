@@ -1,8 +1,8 @@
 import express from 'express';
 import { getAllTypes } from './tipoProductController.js';
 
-const router = express.Router();
+const routerTipo = express.Router();
 
-router.get('/', getAllTypes);
+routerTipo.get('/', getAllTypes);
 
-export default router;
+export default routerTipo;

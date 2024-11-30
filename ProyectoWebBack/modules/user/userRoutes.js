@@ -1,11 +1,11 @@
 import express from 'express';
 import { getAllUsers, getUserById, updateUser } from './userController.js';
-import { isAdmin } from '../../middleware/adminMiddleware.cjs';
+import { isAdmin } from '../auth/adminMiddleware.js';
 
-const router = express.Router();
+const routerUser = express.Router();
 
-router.get('/', isAdmin, getAllUsers);          
-router.get('/:id', isAdmin, getUserById);      
-router.put('/:id', isAdmin, updateUser);       
+routerUser.get('/', isAdmin, getAllUsers);          
+routerUser.get('/:id', isAdmin, getUserById);      
+routerUser.put('/:id', isAdmin, updateUser);       
 
-export default router;
+export default routerUser;
