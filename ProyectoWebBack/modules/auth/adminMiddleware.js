@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-const { Usuario } = require('../models/Usuario.cjs'); 
+import jwt from 'jsonwebtoken'; 
+import { Usuario } from '../../models/Usuario.js'; 
 
 const isAdmin = async (req, res, next) => {
   try {
@@ -28,4 +28,5 @@ const isAdmin = async (req, res, next) => {
   }
 };
 
-module.exports = { isAdmin };
+export { isAdmin };
+

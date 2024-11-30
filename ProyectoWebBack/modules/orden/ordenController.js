@@ -1,7 +1,5 @@
-//Para generar ordenes de compra
-
-const Orden = require('../../models/Orden');
-const ProductoOrden = require('../../models/Orden_Productos');
+import { Orden } from '../../models/Orden.js';
+import { Orden_Productos } from '../../models/Orden_Productos.js';
 
 const createOrder = async (req, res, next) => {
   try {
@@ -14,7 +12,7 @@ const createOrder = async (req, res, next) => {
         orden_id: newOrder.id,
         producto_id: producto.id,
       }));
-      await ProductoOrden.bulkCreate(productosOrden);
+      await Orden_Productos.bulkCreate(productosOrden);
     }
 
     res.status(201).json({ message: 'Orden creada', order: newOrder });
@@ -33,7 +31,4 @@ const getOrdersByUser = async (req, res, next) => {
   }
 };
 
-module.exports = {
-  createOrder,
-  getOrdersByUser,
-};
+export { createOrder, getOrdersByUser };
