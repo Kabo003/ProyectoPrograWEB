@@ -15,7 +15,6 @@ async function insertTiposCliente() {
     ];
 
     try {
-      // Inserta los datos en la tabla Tipo_Cliente
       await Tipo_Cliente.bulkCreate(tiposCliente);
       console.log("Tipos de cliente insertados correctamente.");
     } catch (error) {
@@ -27,7 +26,6 @@ insertTiposCliente();
 
 async function insertCategorias() {
     const categorias = [
-      // Categorías para "Mujer"
       { id: 1, nombre_categoria: "Vestidos", tipo_cliente_id: 2 },
       { id: 2, nombre_categoria: "Blusas|Camisas", tipo_cliente_id: 2 },
       { id: 3, nombre_categoria: "Camisetas", tipo_cliente_id: 2 },
@@ -39,7 +37,6 @@ async function insertCategorias() {
       { id: 9, nombre_categoria: "Perfumes", tipo_cliente_id: 2 },
       { id: 10, nombre_categoria: "Sudaderas", tipo_cliente_id: 2 },
   
-      // Categorías para "Hombre"
       { id: 11, nombre_categoria: "Camisetas", tipo_cliente_id: 1 },
       { id: 12, nombre_categoria: "Pantalones", tipo_cliente_id: 1 },
       { id: 13, nombre_categoria: "Jeans", tipo_cliente_id: 1 },
@@ -50,7 +47,6 @@ async function insertCategorias() {
       { id: 18, nombre_categoria: "Camisas", tipo_cliente_id: 1 },
       { id: 19, nombre_categoria: "Mochilas", tipo_cliente_id: 1 },
   
-      // Categorías para "Niño"
       { id: 20, nombre_categoria: "Zapatos", tipo_cliente_id: 3 },
       { id: 21, nombre_categoria: "Perfumes", tipo_cliente_id: 3 },
       { id: 22, nombre_categoria: "Mochilas", tipo_cliente_id: 3 },
@@ -58,7 +54,6 @@ async function insertCategorias() {
     ];
   
     try {
-      // Inserta los datos en la tabla Categoria
       await Categoria.bulkCreate(categorias);
       console.log("Categorías insertadas correctamente.");
     } catch (error) {
@@ -122,7 +117,6 @@ async function agregarProductos() {
     { id: 50, nombre_producto: "Camiseta de Manga Corta", precio: "89.00", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7bf4IqfF54duMNL1YZ0ga2zKq8k3Hlfduog&usqp=CAU", tipo_cliente_id: 1, color: "Verde", talla: "M", stock: 25, descripcion: "Camiseta de manga corta, perfecta para el verano." }
     ]
     try {
-        // Inserta los datos en la tabla Producto
         await Producto.bulkCreate(productos);
         console.log("Productos insertados correctamente.");
       } catch (error) {

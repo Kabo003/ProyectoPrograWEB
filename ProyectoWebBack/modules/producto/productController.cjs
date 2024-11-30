@@ -1,6 +1,7 @@
+//Para mostrar la información de los productos en el FRONT
+
 const Producto = require('../../models/Producto');
 
-// Listar todos los productos
 const getAllProducts = async (req, res, next) => {
   try {
     const products = await Producto.findAll();
@@ -10,7 +11,6 @@ const getAllProducts = async (req, res, next) => {
   }
 };
 
-// Obtener producto por ID
 const getProductById = async (req, res, next) => {
   try {
     const { id } = req.params;

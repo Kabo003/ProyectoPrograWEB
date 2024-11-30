@@ -1,10 +1,11 @@
 const express = require('express');
 const { getAllUsers, getUserById, updateUser } = require('./userController');
+const { isAdmin } = require('../../middleware/adminMiddleware');
 
 const router = express.Router();
 
-router.get('/', getAllUsers);        // Ruta para obtener todos los usuarios
-router.get('/:id', getUserById);     // Ruta para obtener un usuario por ID
-router.put('/:id', updateUser);      // Ruta para actualizar un usuario
+router.get('/', isAdmin, getAllUsers);       
+router.get('/:id', isAdmin, getUserById);    
+router.put('/:id', isAdmin, updateUser);      
 
 module.exports = router;

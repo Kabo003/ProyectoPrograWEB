@@ -1,9 +1,15 @@
-const express = require('express');
-const { registerUser, loginUser } = require('./authController');
+import express from "express";
+import { registerUser, loginUser } from "../controllers/authController.cjs";
+import { authenticateToken } from "../middlewares/authMiddleware.cjs"; // Middleware de autenticación
 
 const router = express.Router();
 
-router.post('/register', registerUser); // Ruta para registro de usuarios
-router.post('/login', loginUser);       // Ruta para inicio de sesión
+router.post("/register", registerUser);
 
-module.exports = router;
+router.post("/login", loginUser);
+
+router.get("/protected", authenticateToken, (req, res) => {
+  res.status(200).json({ message: "Acceso autorizado.", user: req.user });
+});
+
+export default router;

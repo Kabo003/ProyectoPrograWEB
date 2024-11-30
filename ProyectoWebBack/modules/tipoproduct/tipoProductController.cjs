@@ -1,6 +1,7 @@
+//Filtrado de productos para la categorización
+
 const Tipo = require('../../models/Tipo');
 
-// Listar todos los tipos de productos
 const getAllTypes = async (req, res, next) => {
   try {
     const types = await Tipo.findAll();

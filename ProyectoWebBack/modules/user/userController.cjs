@@ -1,6 +1,7 @@
+//control y gestión de usuarios para el administrador
+
 const Usuario = require('./User');
 
-// Obtener todos los usuarios
 const getAllUsers = async (req, res, next) => {
   try {
     const users = await Usuario.findAll();
@@ -10,7 +11,6 @@ const getAllUsers = async (req, res, next) => {
   }
 };
 
-// Obtener un usuario por ID
 const getUserById = async (req, res, next) => {
   try {
     const user = await Usuario.findByPk(req.params.id);
@@ -21,13 +21,12 @@ const getUserById = async (req, res, next) => {
   }
 };
 
-// Actualizar un usuario
 const updateUser = async (req, res, next) => {
   try {
     const user = await Usuario.findByPk(req.params.id);
     if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
 
-    await user.update(req.body); // Actualizar usuario
+    await user.update(req.body);
     res.status(200).json({ message: 'Usuario actualizado exitosamente', user });
   } catch (error) {
     next(error);

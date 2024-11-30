@@ -3,6 +3,6 @@ const { getAllTypes } = require('./tipoProductController');
 
 const router = express.Router();
 
-router.get('/', getAllTypes); // Listar tipos de producto
+router.get('/', getAllTypes);
 
 module.exports = router;

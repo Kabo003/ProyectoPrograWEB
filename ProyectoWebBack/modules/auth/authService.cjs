@@ -1,17 +1,19 @@
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
-// Generar un token JWT
-const generateToken = (payload) => {
-  return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' });
+export const hashPassword = async (password) => {
+  const salt = await bcrypt.genSalt(10);
+  return bcrypt.hash(password, salt);
 };
 
-// Comparar contraseñas encriptadas
-const comparePasswords = async (password, hashedPassword) => {
-  return await bcrypt.compare(password, hashedPassword);
+export const comparePassword = async (inputPassword, storedPassword) => {
+  return bcrypt.compare(inputPassword, storedPassword);
 };
 
-module.exports = {
-  generateToken,
-  comparePasswords,
+export const generateToken = (user) => {
+  return jwt.sign(
+    { id: user.id, nombre: user.nombre, correo: user.correo },
+    process.env.JWT_SECRET,
+    { expiresIn: "1h" }
+  );
 };

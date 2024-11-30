@@ -1,15 +1,14 @@
+//Para generar ordenes de compra
+
 const Orden = require('../../models/Orden');
 const ProductoOrden = require('../../models/ProductoOrden');
 
-// Crear una nueva orden
 const createOrder = async (req, res, next) => {
   try {
     const { usuario_id, productos, total, direccion, metodoPago, nroTarjeta } = req.body;
 
-    // Crear la orden
     const newOrder = await Orden.create({ usuario_id, total, direccion, metodoPago, nroTarjeta });
 
-    // Asociar productos a la orden
     if (productos && productos.length > 0) {
       const productosOrden = productos.map(producto => ({
         orden_id: newOrder.id,
@@ -24,7 +23,6 @@ const createOrder = async (req, res, next) => {
   }
 };
 
-// Obtener órdenes por usuario
 const getOrdersByUser = async (req, res, next) => {
   try {
     const { usuario_id } = req.params;

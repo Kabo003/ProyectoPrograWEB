@@ -1,16 +1,19 @@
-const jwt = require('jsonwebtoken');
+import jwt from "jsonwebtoken";
+import { Usuario } from "../models/Usuario.cjs";
 
-const authenticateToken = (req, res, next) => {
-  const token = req.headers['authorization'];
-  if (!token) return res.status(403).json({ message: 'Token requerido' });
+export const authenticateToken = (req, res, next) => {
+  // Extrae el token del header Authorization
+  const token = req.header("Authorization")?.replace("Bearer ", "");
+  if (!token) {
+    return res.status(401).json({ error: "No se proporciona token de autenticación." });
+  }
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) return res.status(403).json({ message: 'Token inválido' });
-    req.user = user; // Almacena el usuario decodificado en el objeto req
-    next();
-  });
-};
-
-module.exports = {
-  authenticateToken,
+  try {
+    // Verifica el token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next(); 
+  } catch (error) {
+    res.status(401).json({ error: "Token inválido." });
+  }
 };
