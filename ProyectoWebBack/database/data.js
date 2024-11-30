@@ -124,3 +124,29 @@ async function agregarProductos() {
     }
   }
 agregarProductos()
+
+const crearUsuarios = async () => {
+  try {
+      await Usuario.create({
+          nombre: 'Piero Gutierrez',
+          contraseña: 'Guty123', // Asegúrate de encriptar las contraseñas en un entorno real
+          correo: 'pierog@gmail.com',
+          telefono: '987654321',
+          admi: false
+      });
+
+      await Usuario.create({
+          nombre: 'Gabriel Tieno',
+          contraseña: 'Kabo742',
+          correo: 'Kabo742@gmail.com',
+          telefono: '912345678',
+          admi: true
+      });
+
+      console.log("Usuarios creados exitosamente.");
+  } catch (error) {
+      console.error("Error al crear los usuarios:", error);
+  }
+};
+
+crearUsuarios();
