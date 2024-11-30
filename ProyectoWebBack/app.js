@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+
 import { sequelize } from './database/database.js';
 import { Categoria } from './models/Categoria.js';
 import { Orden_Productos } from './models/Orden_Productos.js';
@@ -9,8 +10,9 @@ import { Tipo_Cliente } from './models/Tipo_Cliente.js';
 import { Usuario } from './models/Usuario.js';
 import { setupRelationships } from './models/setupRelationships.js';
 
+
 const app = express();
-const port = 3002;
+const port = 3008;
 
 app.use(express.json());
 app.use(cors());
@@ -26,8 +28,3 @@ async function verificarConexion(){
         console.error("Ocurrio un error con la conexion a la BD", error)
     }
 }
-
-app.listen(port, () => {
-    console.log("Servidor esta activo en puerto " + port);
-    verificarConexion();
-});

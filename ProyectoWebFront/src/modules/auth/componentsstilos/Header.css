@@ -12,19 +12,21 @@
   width: 100%;
   position: fixed; /* Fijo en la parte superior */
   top: 0;
+ 
   }
   
  
   .header-left .logo {
-    height: 300px; 
+    height: 400px; 
     margin-bottom: 10px;
+    width: auto;
   }
   
   
   .header-right {
     display: flex;
     align-items: center;
-    gap: 40px; 
+    gap: 30px; 
   }
   
   .search-button {

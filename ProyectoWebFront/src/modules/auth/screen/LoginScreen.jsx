@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../componentes/LoginForm";
 import Headers from "../componentes/Header";
 import Footer from "../componentes/Footer";
-
+import "./LoginScreen.css";
 
 const LoginScreen = () => {
     const [username, setUsername] = useState("");
@@ -12,15 +12,16 @@ const LoginScreen = () => {
   
     return (
       <div>
-        <Headers />
+        <Headers></Headers>
         <div className="login-container">
+         
           <form className="login-form">
-           
+            <h3>Accede a tu cuenta</h3>
             <input
               id="username"
               className="login-input"
-              type="text"
-              placeholder="Usuario"
+              type="email"
+              placeholder="Correo"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />

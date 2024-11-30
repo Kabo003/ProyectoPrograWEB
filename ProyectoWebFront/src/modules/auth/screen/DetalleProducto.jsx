@@ -1,43 +1,9 @@
 import React from "react";
-import Footer from "../componentes/Footer";
+
 import Headers from "../componentes/Header";
 import TablaProductos from "../componentes/TablaProductos";
-
-
-const tipo_cliente = [
-  { id: 1, nombre: "Hombre" },
-  { id: 2, nombre: "Mujer" },
-  { id: 3, nombre: "Niño" }
-];
-
-
-const categories = [
-  { id: 1, name: "Mujer - Vestidos", tipo_clienteId: 2 },
-  { id: 2, name: "Mujer - Blusas|Camisas", tipo_clienteId: 2 },
-  { id: 3, name: "Mujer - Camisetas", tipo_clienteId: 2 },
-  { id: 4, name: "Mujer - Pantalones", tipo_clienteId: 2 },
-  { id: 5, name: "Mujer - Jeans", tipo_clienteId: 2 },
-  { id: 6, name: "Mujer - Faldas", tipo_clienteId: 2 },
-  { id: 7, name: "Mujer - Zapatos", tipo_clienteId: 2 },
-  { id: 8, name: "Mujer - Bolsos", tipo_clienteId: 2 },
-  { id: 9, name: "Mujer - Perfumes", tipo_clienteId: 2 },
-  { id: 10, name: "Mujer - Sudaderas", tipo_clienteId: 2 },
-  { id: 11, name: "Hombre - Camisetas", tipo_clienteId: 1 },
-  { id: 12, name: "Hombre - Pantalones", tipo_clienteId: 1 },
-  { id: 13, name: "Hombre - Jeans", tipo_clienteId: 1 },
-  { id: 14, name: "Hombre - Zapatos", tipo_clienteId: 1 },
-  { id: 15, name: "Hombre - Perfumes", tipo_clienteId: 1 },
-  { id: 16, name: "Hombre - Sudaderas", tipo_clienteId: 1 },
-  { id: 17, name: "Hombre - Trajes", tipo_clienteId: 1 },
-  { id: 18, name: "Hombre - Camisas", tipo_clienteId: 1 },
-  { id: 19, name: "Hombre - Mochilas", tipo_clienteId: 1 },
-  { id: 20, name: "Niño - Zapatos", tipo_clienteId: 3 },
-  { id: 21, name: "Niño - Perfumes", tipo_clienteId: 3 },
-  { id: 22, name: "Niño - Mochilas", tipo_clienteId: 3 },
-  { id: 23, name: "Niño - Trajes", tipo_clienteId: 3 }
-  
-];
-
+import "./DetallProducto.css"; // Asegúrate de incluir los estilos
+import Footer from "../componentes/Footer";
 const productos = [
  
     // Ropa (con tallas S y M)
@@ -121,18 +87,81 @@ const productos = [
     { id: 49, nombre: "Sudadera Oversized", precio: "149.00", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSviqMF4rG8dewVerMJ7d4lwLFM5O3Ggse37g&s", tipo_cliente_id: 1, color: "Gris Oscuro", talla: "S", stock: 14, descripcion: "Sudadera oversized gris, cómoda y moderna." },
     { id: 50, nombre: "Sudadera Oversized", precio: "149.00", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSviqMF4rG8dewVerMJ7d4lwLFM5O3Ggse37g&s", tipo_cliente_id: 1, color: "Gris Oscuro", talla: "M", stock: 12, descripcion: "Sudadera oversized gris, cómoda y moderna." }
   ];
- 
+
+  const [talla,setTalla]=useState("");
+  
+  const lista_tallas=["S","M"]
+
+  const handleclick=(valor)=>{
+    setTalla(valor);
+    if(talla===valor){
+        setTalla("");
+    }
+  }
 
 
-const BuscarScreen = () => {
-    return(
-        <div>
-            <Headers></Headers>
+  const DetalleProducto = () => {
+    return (
+      <div>
+        {/* Header */}
+        <Headers></Headers>
+  
+        {/* Contenido principal */}
+        <div className="detalle-producto">
+          {/* Imagen y galería lateral */}
+          <div className="detalle-imagenes">
+            <div className="galeria">
+              {/* Miniaturas (puedes agregar más imágenes aquí) */}
+             
+              
+            </div>
+            <div className="imagen-principal">
+              <img
+                src="https://via.placeholder.com/400"
+                alt="Producto principal"
+              />
+            </div>
+          </div>
+  
+          {/* Información del producto */}
+          <div className="detalle-info">
+            <h1 className="titulo">Vestido Midi Estampado ZW Collection</h1>
+            <p className="precio-original">PEN 229.00</p>
+            <p className="precio-descuento">PEN 137.40</p>
+            <p className="descuento">-40% DESDE EL 28.11 A LAS 21:00H</p>
+            <p className="descripcion">
+              Vestido midi confeccionado en hilatura de algodón 100%. Cuello
+              redondo y escote pico con manga por debajo del codo. Cinturón en
+              mismo tejido ajustable.
+            </p>
+  
+            <h3 className="titulo-tallas">Selecciona tu talla:</h3>
+            <div className="tallas">
+              <table>
+                <tbody>
+                   
 
-            <TablaProductos productos={productos}  />
-            <Footer></Footer>
+
+                </tbody>
+
+
+              </table>
+              <button onClick={handleclick()} id="boton_S" className="talla">S</button>
+              <button  className="talla activo">M</button>
+             
+            </div>
+  
+            <button className="btn-anadir">Añadir al carrito</button>
+          </div>
         </div>
-    )
-}
-
-export default BuscarScreen;
+  
+        {/* Tabla de productos */}
+        <div className="tabla-productos">
+        <TablaProductos productos={productos}></TablaProductos>
+        <Footer></Footer>
+        </div>
+      </div>
+    );
+  };
+  
+  export default DetalleProducto;
