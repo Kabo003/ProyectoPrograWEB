@@ -1,6 +1,4 @@
-//Para mostrar la información de los productos en el FRONT
-
-const Producto = require('../../models/Producto');
+import { Producto } from '../../models/Producto.js';
 
 const getAllProducts = async (req, res, next) => {
   try {
@@ -22,7 +20,4 @@ const getProductById = async (req, res, next) => {
   }
 };
 
-module.exports = {
-  getAllProducts,
-  getProductById,
-};
+export { getAllProducts, getProductById };

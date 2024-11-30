@@ -1,6 +1,6 @@
 import express from "express";
-import { registerUser, loginUser } from "../controllers/authController.cjs";
-import { authenticateToken } from "../middlewares/authMiddleware.cjs"; // Middleware de autenticación
+import { registerUser, loginUser } from "./authController.js";
+import { authenticateToken } from "./authMiddleware.js"; // Middleware de autenticación
 
 const router = express.Router();
 

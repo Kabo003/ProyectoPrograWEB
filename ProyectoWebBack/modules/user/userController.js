@@ -1,8 +1,6 @@
-//control y gestión de usuarios para el administrador
+import { Usuario } from '../../models/Usuario.js';
 
-const Usuario = require('./User');
-
-const getAllUsers = async (req, res, next) => {
+export const getAllUsers = async (req, res, next) => {
   try {
     const users = await Usuario.findAll();
     res.status(200).json(users);
@@ -11,7 +9,7 @@ const getAllUsers = async (req, res, next) => {
   }
 };
 
-const getUserById = async (req, res, next) => {
+export const getUserById = async (req, res, next) => {
   try {
     const user = await Usuario.findByPk(req.params.id);
     if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
@@ -21,7 +19,7 @@ const getUserById = async (req, res, next) => {
   }
 };
 
-const updateUser = async (req, res, next) => {
+export const updateUser = async (req, res, next) => {
   try {
     const user = await Usuario.findByPk(req.params.id);
     if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
@@ -31,10 +29,4 @@ const updateUser = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-};
-
-module.exports = {
-  getAllUsers,
-  getUserById,
-  updateUser,
 };

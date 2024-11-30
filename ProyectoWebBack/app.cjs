@@ -1,13 +1,13 @@
 import express from 'express';
 import cors from 'cors';
-import { sequelize } from './database/database.cjs';
-import { Categoria } from './models/Categoria.cjs';
-import { Orden_Productos } from './models/Orden_Productos.cjs';
-import { Orden } from './models/Orden.cjs';
-import { Producto } from './models/Producto.cjs';
-import { Tipo_Cliente } from './models/Tipo_Cliente.cjs';
-import { Usuario } from './models/Usuario.cjs';
-import { setupRelationships } from './models/setupRelationships.cjs';
+import { sequelize } from './database/database.js';
+import { Categoria } from './models/Categoria.js';
+import { Orden_Productos } from './models/Orden_Productos.js';
+import { Orden } from './models/Orden.js';
+import { Producto } from './models/Producto.js';
+import { Tipo_Cliente } from './models/Tipo_Cliente.js';
+import { Usuario } from './models/Usuario.js';
+import { setupRelationships } from './models/setupRelationships.js';
 
 const app = express();
 const port = 3002;

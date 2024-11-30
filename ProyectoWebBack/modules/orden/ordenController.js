@@ -1,7 +1,5 @@
-//Para generar ordenes de compra
-
-const Orden = require('../../models/Orden');
-const ProductoOrden = require('../../models/Orden_Productos');
+import { Orden } from '../../models/Orden.js';
+import { ProductoOrden } from '../../models/Orden_Productos.js';
 
 const createOrder = async (req, res, next) => {
   try {
@@ -33,7 +31,4 @@ const getOrdersByUser = async (req, res, next) => {
   }
 };
 
-module.exports = {
-  createOrder,
-  getOrdersByUser,
-};
+export { createOrder, getOrdersByUser };
