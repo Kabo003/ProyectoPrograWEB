@@ -1,25 +1,27 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../database/database.js";
+import { sequelize } from "../database/database.mjs";
 
-export const Publicacion = sequelize.define(
-    "Publicacion", {
+export const Usuario = sequelize.define(
+    "Usuario", {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        titulo: {
+        nombre: {
             type: DataTypes.STRING
         },
-        contenido: {
+        contraseña: {
             type: DataTypes.STRING
         },
-        autor: {
+        correo: {
             type: DataTypes.STRING
         },
-        estado: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true
+        telefono: {
+            type: DataTypes.STRING
+        },
+        admi: {
+            type: DataTypes.BOOLEAN
         }
     }, {
         freezeTableName: true

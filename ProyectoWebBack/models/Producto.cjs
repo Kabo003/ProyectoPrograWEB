@@ -1,29 +1,38 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/database.js";
+import { sequelize } from "../database/database.mjs";
 
 export const Producto = sequelize.define(
-    "Producto",{
-        id:{
+    "Producto", {
+        id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        nombre:{
+        nombre_producto: {
             type: DataTypes.STRING
         },
-        detalle:{
+        imagen: {
             type: DataTypes.STRING
         },
         precio: {
-            type: DataTypes.INTEGER
+            type: DataTypes.DECIMAL(10, 2)
+        },
+        descripcion: {
+            type: DataTypes.STRING
+        },
+        color: {
+            type: DataTypes.STRING
         },
         stock: {
             type: DataTypes.INTEGER
         },
-        imagen: {
+        talla: {
             type: DataTypes.STRING
+        },
+        categoria_id: {
+            type: DataTypes.INTEGER
         }
-    },{
+    }, {
         freezeTableName: true
     }
 );
