@@ -1,9 +1,9 @@
-import { Categoria } from "./Categoria.cjs";
-import { Tipo_Cliente } from "./Tipo_Cliente.cjs";
-import { Producto } from "./Producto.cjs";
-import { Usuario } from "./Usuario.cjs";
-import { Orden } from "./Orden.cjs";
-import { Orden_Productos } from "./Orden_Productos.cjs";
+import { Categoria } from "./Categoria.js";
+import { Tipo_Cliente } from "./Tipo_Cliente.js";
+import { Producto } from "./Producto.js";
+import { Usuario } from "./Usuario.js";
+import { Orden } from "./Orden.js";
+import { Orden_Productos } from "./Orden_Productos.js";
 
 export function setupRelationships() {
     // Relación: Categoria tiene muchos Tipo_Cliente
