@@ -23,10 +23,10 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/products', routerProducto);
-app.use('/pinga', routerAuth);
-app.use('/daa', routerOrden);
+app.use('/inicioSesion', routerAuth);
+app.use('/orden', routerOrden);
 app.use('/tipo', routerTipo);
-app.use('/i', routerUser);
+app.use('/usuarios', routerUser);
 
 setupRelationships();
 
