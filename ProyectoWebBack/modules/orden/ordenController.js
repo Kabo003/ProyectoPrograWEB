@@ -1,5 +1,7 @@
 import { Orden } from '../../models/Orden.js';
 import { Orden_Productos } from '../../models/Orden_Productos.js';
+import { Producto } from '../../models/Producto.js';
+
 
 const createOrder = async (req, res, next) => {
   try {
@@ -8,18 +10,37 @@ const createOrder = async (req, res, next) => {
     const newOrder = await Orden.create({ usuario_id, total, direccion, metodoPago, nroTarjeta });
 
     if (productos && productos.length > 0) {
+
       const productosOrden = productos.map(producto => ({
         orden_id: newOrder.id,
         producto_id: producto.id,
       }));
       await Orden_Productos.bulkCreate(productosOrden);
+
+      // Reducir el stock de cada producto
+      for (const producto of productos) {
+        const productoDB = await Producto.findByPk(producto.id);
+
+        if (!productoDB) {
+          throw new Error(`Producto con ID ${producto.id} no encontrado`);
+        }
+
+        if (productoDB.stock < producto.cantidad) {
+          throw new Error(
+            `Stock insuficiente para el producto "${productoDB.nombre_producto}". Stock disponible: ${productoDB.stock}, solicitado: ${producto.cantidad}`
+          );
+        }
+
+        await productoDB.update({ stock: productoDB.stock - producto.cantidad });
+      }
     }
 
-    res.status(201).json({ message: 'Orden creada', order: newOrder });
+    res.status(201).json({ message: 'Orden creada y stock actualizado', order: newOrder });
   } catch (error) {
     next(error);
   }
 };
+
 
 const getOrdersByUser = async (req, res, next) => {
   try {
