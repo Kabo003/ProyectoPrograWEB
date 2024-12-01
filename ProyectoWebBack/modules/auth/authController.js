@@ -1,5 +1,5 @@
-import { Usuario } from "../models/Usuario.cjs";
-import { authService } from "../services/authService.cjs"; 
+import { Usuario } from "../../models/Usuario.js";
+import authService from "./authService.js";
 
 export const registerUser = async (req, res) => {
   const { nombre, correo, contraseña, telefono } = req.body;
