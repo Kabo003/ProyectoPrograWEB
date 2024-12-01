@@ -40,7 +40,6 @@ async function verificarConexion(){
     }
 }
 
-
 app.listen(port, () => {
     console.log("Servidor esta activo en puerto " + port);
     verificarConexion();
