@@ -50,7 +50,7 @@ const ListaNavegacion = () => {
       <ul className="category-list">
         {lista_Categorias.map((categoria) => (
           <li key={categoria} className="category-item">
-            {/* Botón de categoría principal */}
+           
             <button
               onClick={() => handleCategoryClick(categoria)}
               className={`category-btn ${

@@ -19,7 +19,8 @@ const Headers =  () => {
    const Buscar=()=>{
       navigate('/pe/es/search/home')
    }
-
+  
+ 
    
 
 
