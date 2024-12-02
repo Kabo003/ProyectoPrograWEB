@@ -30,6 +30,7 @@ const LoginScreen = () => {
           setUser(userData);
           navigate("/pe/es/search/home"); 
           console.log(userData)
+          //
         }
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
