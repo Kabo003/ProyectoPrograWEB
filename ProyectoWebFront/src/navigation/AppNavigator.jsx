@@ -5,7 +5,7 @@ import LoginScreen from "../modules/auth/screen/LoginScreen";
 import BuscarScreen from "../modules/auth/screen/BuscarScreen";
 import DetalleProducto from "../modules/auth/screen/DetalleProducto";
 import CarritoScreen from "../modules/auth/screen/CarritoScreen";
-import { ProfileCard } from "../modules/profile/componentes/ProfileCard";
+import { ProfileCard } from "../modules/profile/componentes/AdminCard";
 
 
 
