@@ -3,48 +3,73 @@ import { AuthContext } from "../componentes/LoginForm";
 import Headers from "../componentes/Header";
 import Footer from "../componentes/Footer";
 import "./LoginScreen.css";
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "../../products/apiProductos";
 
 const LoginScreen = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [correo, setCorreo] = useState("");
+    const [contraseña, setContraseña] = useState("");
+    const [user, setUser] = useState(null);
   
-    const { login } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    const IrRegister = () => {
+      navigate('/register');
+    }
+
+    const handleLogin = async (e) => {
+      e.preventDefault();
+      try {
+        const userData = await loginUser(correo, contraseña); 
+  
+        if (userData && userData.admin){
+          navigate("/pe/es/admin")
+        }
+        else if (userData) {
+          setUser(userData);
+          navigate("/pe/es/search/home"); 
+          console.log(userData)
+        }
+      } catch (error) {
+        console.error("Error al iniciar sesión:", error);
+        alert("Error al iniciar sesión: " + error.message); 
+      }
+    };
+  
   
     return (
       <div>
         <Headers></Headers>
         <div className="login-container">
          
-          <form className="login-form">
+          <form className="login-form" onSubmit={handleLogin}>
             <h3>Accede a tu cuenta</h3>
             <input
-              id="username"
+              id="correo"
               className="login-input"
               type="email"
               placeholder="Correo"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={correo}
+              onChange={(e) => setCorreo(e.target.value)}
             />
            
             <input
-              id="password"
+              id="contraseña"
               className="login-input"
-              type="password"
+              type="contraseña"
               placeholder="Contraseña"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={contraseña}
+              onChange={(e) => setContraseña(e.target.value)}
             />
             <button
               type="submit"
               className="login-button"
-              onClick={(e) => {
-                e.preventDefault();
-                login(username, password);
-              }}
-            >
-              Iniciar Sesión
-            </button>
-            <button className="login-button" onClick={() => alert("Registrarse")}>
+
+            > Iniciar Sesión</button>
+
+            
+            <button className="login-button" onClick={() => IrRegister()}>
               Regístrate
             </button>
           </form>

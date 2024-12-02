@@ -6,7 +6,7 @@ import { ObtenerProductos } from "../../products/apiProductos";
 import { useEffect } from "react";
 
 const BuscarScreen = () => {
-    const [productos, setProductos] = useState();
+    const [productos, setProductos] = useState([]);
 
 
     useEffect(() => {

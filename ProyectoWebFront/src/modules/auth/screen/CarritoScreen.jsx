@@ -1,31 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Footer from "../componentes/Footer";
 import Headers from "../componentes/Header";
 import TablaProductos from "../componentes/TablaProductos";
 import "./CarritoScreen.css";
-const productos = []
+import { ObtenerProductos } from "../../products/apiProductos";
+import { CarritoContext } from "../componentes/CarritoContext";
+
   
 const CarritoScreen=()=>{
 
-   const [carrito,setcarrito]=useState([]);
+   const {carrito,eliminarDelCarrito}=useContext(CarritoContext)
    
-  
-   //const actualizarCarrito=(producto)=>{
-   // setcarrito([...carrito,producto]) 
-   //}
+   const [productos,setProductos]=useState([]);
+   
+   
+   useEffect(() => {
+    const cargarProductos = async () => {
+        const datos = await ObtenerProductos();
+        if (datos) {
+            setProductos(datos); 
+        }
+       
+    };
 
-   const eliminar_producto_Carrito=(id)=>{
-      
-      setcarrito(carrito.filter((producto)=>producto.id!==id))
-         
-   }
-
-   useEffect(()=>{   
-   },[carrito])
-
-
-
-
+    cargarProductos();
+}, []);
     return(
         <>
       <Headers></Headers>
@@ -47,7 +46,7 @@ const CarritoScreen=()=>{
             <p>PEN {item.precio}</p>
             <p>Talla: {item.talla}</p>
             <p>Color: {item.color}</p>
-            <button onClick={()=>eliminar_producto_Carrito(item.id)} className="remove-btn">Eliminar</button>
+            <button onClick={()=>eliminarDelCarrito(item.id)} className="remove-btn">Eliminar</button>
           </div>
         </li>
       ))}
@@ -60,5 +59,5 @@ const CarritoScreen=()=>{
       </>
     );
 
-}
+  }
 export default CarritoScreen
