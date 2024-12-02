@@ -5,9 +5,10 @@ function adminServices() {
     const [productos, setProductos] = useState([]);
     const [productosEditable, setProductosEditable] = useState(null);
 
+
     useEffect(() => {
         const mostrarProductos = async () => {
-            const datos = await obtenerProductos();
+            const datos = await ObtenerProductos();
             setProductos(datos)
         }
         mostrarProductos();
@@ -41,7 +42,7 @@ function adminServices() {
 
     return(
         <div>
-            
+
         </div>
     )
 }

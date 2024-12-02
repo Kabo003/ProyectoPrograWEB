@@ -2,7 +2,7 @@ import React from "react";
 
 import Headers from "../componentes/Header";
 import TablaProductos from "../componentes/TablaProductos";
-import "./DetallProducto.css"; // Asegúrate de incluir los estilos
+import "./DetalleProducto.css"; // Asegúrate de incluir los estilos
 import Footer from "../componentes/Footer";
 const productos = [
  
@@ -88,17 +88,6 @@ const productos = [
     { id: 50, nombre: "Sudadera Oversized", precio: "149.00", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSviqMF4rG8dewVerMJ7d4lwLFM5O3Ggse37g&s", tipo_cliente_id: 1, color: "Gris Oscuro", talla: "M", stock: 12, descripcion: "Sudadera oversized gris, cómoda y moderna." }
   ];
 
-  const [talla,setTalla]=useState("");
-  
-  const lista_tallas=["S","M"]
-
-  const handleclick=(valor)=>{
-    setTalla(valor);
-    if(talla===valor){
-        setTalla("");
-    }
-  }
-
 
   const DetalleProducto = () => {
     return (
@@ -137,16 +126,8 @@ const productos = [
   
             <h3 className="titulo-tallas">Selecciona tu talla:</h3>
             <div className="tallas">
-              <table>
-                <tbody>
-                   
-
-
-                </tbody>
-
-
-              </table>
-              <button onClick={handleclick()} id="boton_S" className="talla">S</button>
+             
+              <button >S</button>
               <button  className="talla activo">M</button>
              
             </div>
